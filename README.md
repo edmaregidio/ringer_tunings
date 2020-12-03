@@ -86,6 +86,10 @@ information contained in concentric rings of energy deposition, which compacts
 the information through physics expert knowledge, while keeping the
 discriminating patterns.
 
+## Branch Descritption:
+
+This branch is dedicated to include all tunings related to the `fast calo` step in the e/g HLT.
+
 ## Tags:
 
 All tunings tags should be included into the `versions` directory. For each tag, you must add some description here
