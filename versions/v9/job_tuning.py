@@ -43,12 +43,12 @@ parser.add_argument('-t','--type', action='store',
         dest='type', required = True, default = 'fusion',
             help = "The type of derivation (ringer, shower or fusion)")
 
-parser.add_argument('--path_to_rg', action='store',
-        dest='path_to_rg', required = False, default = None,
+parser.add_argument('--path_to_rings', action='store',
+        dest='path_to_rings', required = False, default = None,
             help = "The path to the ringer tuned files.")
 
-parser.add_argument('--path_to_ss', action='store',
-        dest='path_to_ss', required = False, default = None,
+parser.add_argument('--path_to_shower', action='store',
+        dest='path_to_shower', required = False, default = None,
             help = "The path to the shower tuned files.")
 
 
@@ -194,7 +194,7 @@ def getJobConfigId( path ):
 #
 class Model( model_generator_base ):
 
-  def __init__( self, ringer_path, shower_path ):
+  def __init__( self, rings_path, shower_path ):
 
     model_generator_base.__init__(self)
     import tensorflow as tf
@@ -211,7 +211,7 @@ class Model( model_generator_base ):
     
     # Build the model
     self.__model = tf.keras.Model([input_rings, input_shower_shapes], output, name = "model")
-    self.__tuned_ringer_models = self.load_models(ringer_path)
+    self.__tuned_rings_models = self.load_models(rings_path)
     self.__tuned_shower_models = self.load_models(shower_path)
 
  
@@ -229,16 +229,16 @@ class Model( model_generator_base ):
     MSG_INFO(self, "Target model:" )
     model.summary()
     
-    shower = self.get_best_model( self.__tuned_shower_models, sort , 0) # five neurons in the hidden layer
+    shower_model = self.get_best_model( self.__tuned_shower_models, sort , 0) # five neurons in the hidden layer
     MSG_INFO( self, "Shower shape model (right):")
-    shower.summary()
+    shower_model.summary()
     
-    rings  = self.get_best_model( self.__tuned_ringer_models, sort , 0) # five neurons in the hidden layer
+    rings_model  = self.get_best_model( self.__tuned_rings_models, sort , 0) # five neurons in the hidden layer
     MSG_INFO( self, "Ringer model (left):")
-    rings.summary()
+    rings_model.summary()
 
-    self.transfer_weights( shower, 'dense_layer' , model, 'dense_shower_layer' , trainable=self.__trainable)
-    self.transfer_weights( rings , 'dense_layer' , model, 'dense_rings_layer'  , trainable=self.__trainable)
+    self.transfer_weights( shower_model, 'dense_layer' , model, 'dense_shower_layer' , trainable=self.__trainable)
+    self.transfer_weights( rings_model , 'dense_layer' , model, 'dense_rings_layer'  , trainable=self.__trainable)
     return model
 
 

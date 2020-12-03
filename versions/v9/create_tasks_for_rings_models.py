@@ -7,7 +7,7 @@ command = """maestro.py task create \
   -c user.jodafons.job_config.Zee_v9.rg.10sorts.2inits \
   -d user.jodafons.data17_13TeV.AllPeriods.sgn.probes_lhmedium_EGAM1.bkg.VProbes_EGAM7.GRL_v97_et{ET}_eta{ETA}.npz \
   --sd "{REF}" \
-  --exec "run_tuning.py -c %IN -d %DATA -r %REF -v %OUT -t v9 -b zee_fastcalo --extraArgs '--type rings'" \
+  --exec "run_tuning.py -c %IN -d %DATA -r %REF -v %OUT -t v9 -b zee --extraArgs '--type rings'" \
   --queue "gpu" """
 
 

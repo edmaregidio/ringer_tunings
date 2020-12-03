@@ -43,13 +43,13 @@ parser.add_argument('-t','--type', action='store',
         dest='type', required = True, default = 'fusion',
             help = "The type of derivation (ringer, shower or fusion)")
 
-parser.add_argument('--path_to_v10', action='store',
-        dest='path_to_v10', required = False, default = None,
-            help = "The path to the ringer v10 tuned files.")
+parser.add_argument('--path_to_rings', action='store',
+        dest='path_to_rings', required = False, default = None,
+            help = "The path to the ringer tuned files. ex: v10 version")
 
-parser.add_argument('--path_to_v9_ss', action='store',
-        dest='path_to_v9_ss', required = False, default = None,
-            help = "The path to the v9 shower tuned files.")
+parser.add_argument('--path_to_shower', action='store',
+        dest='path_to_shower', required = False, default = None,
+            help = "The path to the showers tuned files. ex: v9_ss version")
 
 
 if len(sys.argv)==1:
@@ -194,7 +194,7 @@ def getJobConfigId( path ):
 #
 class Model( model_generator_base ):
 
-  def __init__( self, v10_path, v9_ss_path ):
+  def __init__( self, rings_path, shower_path ):
 
     model_generator_base.__init__(self)
     import tensorflow as tf
@@ -228,8 +228,8 @@ class Model( model_generator_base ):
 
     # Build the model
     self.__model = tf.keras.Model([input_rings, input_shower_shapes], output, name = "model")
-    self.__tuned_v10_models = self.load_models(v10_path)
-    self.__tuned_v9_ss_models = self.load_models(v9_ss_path)
+    self.__tuned_rings_models = self.load_models(rings_path)
+    self.__tuned_shower_models = self.load_models(shower_path)
 
  
     # Follow the strategy proposed by werner were we keep these weights free to do the fine tunings
@@ -251,18 +251,18 @@ class Model( model_generator_base ):
     MSG_INFO(self, "Target model:" )
     model.summary()
     
-    v10 = self.get_best_model( self.__tuned_v10_models, sort , 0) # five neurons in the hidden layer
-    MSG_INFO( self, "v10 model (right):")
-    v10.summary()
+    rings_model = self.get_best_model( self.__tuned_rings_models, sort , 0) # five neurons in the hidden layer
+    MSG_INFO( self, "rings model (right):")
+    rings_model.summary()
     
-    v9_ss = self.get_best_model( self.__tuned_v9_ss_models, sort , 0) # five neurons in the hidden layer
-    MSG_INFO( self, "v9 model (left):")
-    v9_ss.summary()
+    shower_model = self.get_best_model( self.__tuned_shower_models, sort , 0) # five neurons in the hidden layer
+    MSG_INFO( self, "shower model (left):")
+    shower_model.summary()
 
-    self.transfer_weights( v10  , 'conv1d_layer_1' , model, 'conv1d_rings_1'        , trainable=self.__trainable)
-    self.transfer_weights( v10  , 'conv1d_layer_2' , model, 'conv1d_rings_2'        , trainable=self.__trainable)
-    self.transfer_weights( v10  , 'dense_layer'  , model, 'dense_conv_layer'  , trainable=self.__trainable)
-    self.transfer_weights( v9_ss, 'dense_layer'  , model, 'dense_shower_layer'  , trainable=self.__trainable)
+    self.transfer_weights( rings_model  , 'conv1d_layer_1' , model, 'conv1d_rings_1'      , trainable=self.__trainable)
+    self.transfer_weights( rings_model  , 'conv1d_layer_2' , model, 'conv1d_rings_2'      , trainable=self.__trainable)
+    self.transfer_weights( rings_model  , 'dense_layer'    , model, 'dense_conv_layer'    , trainable=self.__trainable)
+    self.transfer_weights( shower_model , 'dense_layer'    , model, 'dense_shower_layer'  , trainable=self.__trainable)
     return model
 
 
@@ -302,7 +302,7 @@ try:
     getPatterns=getPatterns_rings
   elif args.type == 'fusion':
     getPatterns=getPatterns_fusion
-    model = Model( args.path_to_v10, args.path_to_v9_ss )
+    model = Model( args.path_to_rings, args.path_to_shower )
   else:
     getPatterns=getPatterns_rings
 
