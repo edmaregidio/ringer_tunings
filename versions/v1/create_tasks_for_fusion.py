@@ -15,7 +15,7 @@ command = """maestro.py task create \
   -c user.jodafons.job_config.Zee_v1_el.10sorts.2inits \
   -d user.jodafons.data17_13TeV.AllPeriods.sgn.probes_lhmedium_EGAM1.bkg.VProbes_EGAM7.GRL_v97_et{ET}_eta{ETA}.npz \
   --sd "{REF}" \
-  --exec "run_tuning.py -c %IN -d %DATA -r %REF -v %OUT -t v1 -b zee_fast_el \
+  --exec "run_tuning.py -c %IN -d %DATA -r %REF -v %OUT -t v1 -b zee_el \
   --extraArgs '--type fusion --path_to_rings {RINGS} --path_to_shower {SHOWER} --path_to_track {TRACK}'" \
   --queue "gpu" """
 

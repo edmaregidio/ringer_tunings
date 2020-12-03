@@ -9,7 +9,7 @@ command = """maestro.py task create \
   -c user.jodafons.job_config.fastelectron.Zee_v1.trk.10sorts.2inits \
   -d user.jodafons.data17_13TeV.AllPeriods.sgn.probes_lhmedium_EGAM1.bkg.VProbes_EGAM7.GRL_v97_et{ET}_eta{ETA}.npz \
   --sd "{REF}" \
-  --exec "run_tuning.py -c %IN -d %DATA -r %REF -v %OUT -t v1 -b zee_fastelectron \
+  --exec "run_tuning.py -c %IN -d %DATA -r %REF -v %OUT -t v1 -b zee_el \
   --extraArgs '--type track'" \
   --queue "gpu" """
 

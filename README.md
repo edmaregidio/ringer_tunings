@@ -1,5 +1,5 @@
 
-# The Ringer Tunings Repository
+# The Ringer Tuning Repository
 
 In 2017 the ATLAS experiment implemented an ensemble of neural networks
 (NeuralRinger algorithm) dedicated to improving the performance of filtering
@@ -86,25 +86,23 @@ information contained in concentric rings of energy deposition, which compacts
 the information through physics expert knowledge, while keeping the
 discriminating patterns.
 
+## Branch Descritption:
 
-## Branches:
-
-- `zee`: Dedicated branch to support all tuning developments for Zee decay and electron triggers higher than 15 GeV;
-- `jpsiee`: Dedicated branch to support all tuning developments for Jpsiee decay and electron triggers below 15 GeV;
+This branch is dedicated to include all tunings related to the `fast electron` step in the e/g HLT.
 
 
-## Packages:
+## Tags:
 
-- `saphyra`: Tuning package used to derive the ringer (see [here](https://github.com/jodafons/saphyra)));
-- `prometheus`: The ATLAS analysis framework to test the tuning (see [here](https://github.com/jodafons/prometheus)));
+All tunings tags should be included into the `versions` directory. For each tag, you must add some description here
+for tracking purpose.
+
+- v1: You should include some description here.
+- v2: You should include some description here.
 
 
-
-## Contribution:
+## Responsible:
 
 - Dr. João Victor da Fonseca Pinto, UFRJ/COPPE, CERN/ATLAS (jodafons@cern.ch) [maintainer, developer]
-- Dr. Werner Freund, UFRJ/COPPE, CERN/ATLAS (wsfreund@cern.ch) [developer]
-- Msc. Micael Veríssimo de Araújo, UFRJ/COPPE, CERN/ATLAS (mverissi@cern.ch) [developer]
 
 
 ## Notes:
