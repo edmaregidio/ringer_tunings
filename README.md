@@ -88,6 +88,9 @@ discriminating patterns.
 
 ## Tags:
 
+All tunings tags should be included into the `versions` directory. For each tag, you must add some description here
+for tracking purpose.
+
 - v2: You should include some description here.
 - v6: You should include some description here.
 - v7: You should include some description here.
