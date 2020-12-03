@@ -86,25 +86,20 @@ information contained in concentric rings of energy deposition, which compacts
 the information through physics expert knowledge, while keeping the
 discriminating patterns.
 
+## Tags:
 
-## Branches:
-
-- `zee`: Dedicated branch to support all tuning developments for Zee decay and electron triggers higher than 15 GeV;
-- `jpsiee`: Dedicated branch to support all tuning developments for Jpsiee decay and electron triggers below 15 GeV;
-
-
-## Packages:
-
-- `saphyra`: Tuning package used to derive the ringer (see [here](https://github.com/jodafons/saphyra)));
-- `prometheus`: The ATLAS analysis framework to test the tuning (see [here](https://github.com/jodafons/prometheus)));
+- v2: You should include some description here.
+- v6: You should include some description here.
+- v7: You should include some description here.
+- v8: You should include some description here.
+- v9: You should include some description here.
+- v10: You should include some description here.
+- v11: You should include some description here.
 
 
-
-## Contribution:
+## Responsible:
 
 - Dr. João Victor da Fonseca Pinto, UFRJ/COPPE, CERN/ATLAS (jodafons@cern.ch) [maintainer, developer]
-- Dr. Werner Freund, UFRJ/COPPE, CERN/ATLAS (wsfreund@cern.ch) [developer]
-- Msc. Micael Veríssimo de Araújo, UFRJ/COPPE, CERN/ATLAS (mverissi@cern.ch) [developer]
 
 
 ## Notes:
