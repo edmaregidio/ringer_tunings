@@ -89,16 +89,16 @@ discriminating patterns.
 
 ## Branches:
 
-- `zee`: Dedicated branch to support all tuning developments for Zee decay and electron triggers higher than 15 GeV for the fast calo step;
-- `zee_el`: Dedicated branch to support all tuning developments for Zee decay and electron triggers higher than 15 GeV for the trigger electron step;
-- `jpsi`: Dedicated branch to support all tuning developments for Jpsiee decay and electron triggers below 15 GeV for the fast calo step;
-- `zrad`: Dedicated branch to support all tuning developments for Z radiative decay and photon triggers for the fast calo step.
+- `zee`: Dedicated branch to support all tuning developments for Zee decay and electron triggers higher than 15 GeV for the fast calo step (assigned to João);
+- `zee_el`: Dedicated branch to support all tuning developments for Zee decay and electron triggers higher than 15 GeV for the trigger electron step (assigned to João);
+- `jpsi`: Dedicated branch to support all tuning developments for Jpsiee decay and electron triggers below 15 GeV for the fast calo step (assigned to Micael);
+- `zrad`: Dedicated branch to support all tuning developments for Z radiative decay and photon triggers for the fast calo step (assigned to Juan).
 
 
 ## Packages:
 
-- `saphyra`: Tuning package used to derive the ringer (see [here](https://github.com/jodafons/saphyra)));
-- `prometheus`: The ATLAS analysis framework to test the tuning (see [here](https://github.com/jodafons/prometheus)));
+- `saphyra`: Tuning package used to derive the ringer (see [here](https://github.com/jodafons/saphyra));
+- `prometheus`: The ATLAS analysis framework to test the tuning (see [here](https://github.com/jodafons/prometheus));
 
 
 
