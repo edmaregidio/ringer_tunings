@@ -1,5 +1,5 @@
 
-# The ringer tunings repository
+# The ringer tuning repository
 
 In 2017 the ATLAS experiment implemented an ensemble of neural networks
 (NeuralRinger algorithm) dedicated to improving the performance of filtering
