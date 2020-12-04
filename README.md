@@ -89,8 +89,10 @@ discriminating patterns.
 
 ## Branches:
 
-- `zee`: Dedicated branch to support all tuning developments for Zee decay and electron triggers higher than 15 GeV;
-- `jpsiee`: Dedicated branch to support all tuning developments for Jpsiee decay and electron triggers below 15 GeV;
+- `zee`: Dedicated branch to support all tuning developments for Zee decay and electron triggers higher than 15 GeV for the fast calo step;
+- `zee_el`: Dedicated branch to support all tuning developments for Zee decay and electron triggers higher than 15 GeV for the trigger electron step;
+- `jpsi`: Dedicated branch to support all tuning developments for Jpsiee decay and electron triggers below 15 GeV for the fast calo step;
+- `zrad`: Dedicated branch to support all tuning developments for Z radiative decay and photon triggers for the fast calo step.
 
 
 ## Packages:
