@@ -5,8 +5,8 @@ import os
 
 command = """maestro.py task create \
   -v $PWD \
-  -t user.jodafons.data17_13TeV.AllPeriods.sgn.probes_lhmedium_EGAM1.bkg.VProbes_EGAM7.GRL_v97.fastelectron.v1.trk.et{ET}_eta{ETA}.r1 \
-  -c user.jodafons.job_config.fastelectron.Zee_v1.trk.10sorts.2inits \
+  -t user.jodafons.data17_13TeV.AllPeriods.sgn.probes_lhmedium_EGAM1.bkg.VProbes_EGAM7.GRL_v97.v1_el_trk_et{ET}_eta{ETA}.r0 \
+  -c user.jodafons.job_config.Zee_v1_el_trk.10sorts.2inits \
   -d user.jodafons.data17_13TeV.AllPeriods.sgn.probes_lhmedium_EGAM1.bkg.VProbes_EGAM7.GRL_v97_et{ET}_eta{ETA}.npz \
   --sd "{REF}" \
   --exec "run_tuning.py -c %IN -d %DATA -r %REF -v %OUT -t v1 -b zee_el \
