@@ -72,16 +72,21 @@ args = parser.parse_args()
 def getPatterns_track( path, cv, sort):
 
   d = load(path)
-  n = d['data'].shape[0]
-
   feature_names = d['features'].tolist()
-  
+  has_track = d['data'][:,feature_names.index('L2Electron_hastrack')]
+
+  # Get only events with L2 electron object to the training phase
+  d['target'] = d['target'][has_track==True]
+  d['data'] = d['data'][has_track==True]
+
+
+  target = d['target']
+  n = d['data'].shape[0]
   data_etOverPt  = d['data'][:, feature_names.index('L2Electron_etOverPt')].reshape((n,1))
   data_deta      = d['data'][:, feature_names.index('L2Electron_trkClusDeta')].reshape((n,1))
   data_dphi      = d['data'][:, feature_names.index('L2Electron_trkClusDphi')].reshape((n,1))
   data  = np.concatenate( (data_etOverPt, data_deta, data_dphi), axis=1)
 
-  target = d['target']
   splits = [(train_index, val_index) for train_index, val_index in cv.split(data_deta,target)]
   x_train = [data [ splits[sort][0]]]
   y_train = target [ splits[sort][0] ]
@@ -107,10 +112,16 @@ def getPatterns_fusion( path, cv, sort):
 
   d = load(path)
   feature_names = d['features'].tolist()
-  
+  has_track = d['data'][:,feature_names.index('L2Electron_hastrack')]
+
+  # Get only events with L2 electron object to the training phase
+  d['target'] = d['target'][has_track==True]
+  d['data'] = d['data'][has_track==True]
+
+
   # How many events?
   n = d['data'].shape[0]
-
+  target = d['target']
   # extract all rings
   data_rings  = norm1(d['data'][:,1:101])
   # extract all shower shapes
@@ -121,7 +132,6 @@ def getPatterns_fusion( path, cv, sort):
   data_weta2  = d['data'][:, feature_names.index('L2Calo_weta2')].reshape((n,1)) / 0.02
   data_wstot  = d['data'][:, feature_names.index('L2Calo_wstot')].reshape((n,1)) / 1.0
 
-  target = d['target']
 
   # Fix all shower shapes variables
   data_eratio[data_eratio>10.0]=0
@@ -172,20 +182,20 @@ class Model( model_generator_base ):
     model_generator_base.__init__(self)
     import tensorflow as tf
     from tensorflow.keras import layers
-   
+
 
     # ringer shape
     input_rings = layers.Input(shape=(100,), name='Input_rings')
     dense_rings = layers.Dense(5, activation='relu', name='dense_rings_layer')(input_rings)
-    
+
     # shower shapes
     input_shower_shapes = layers.Input(shape=(6,), name='Input_shower_shapes')
     dense_shower_shapes = layers.Dense(5, activation='relu', name='dense_shower_layer')(input_shower_shapes)
-    
+
     # track variables
     input_track_variables = layers.Input(shape=(3,), name='Input_track_variables')
     dense_track_variables = layers.Dense(5, activation='relu', name='dense_track_variables_layer')(input_track_variables)
-    
+
 
     # decision layer
     input_concat = layers.Concatenate(axis=1)([dense_rings, dense_shower_shapes, dense_track_variables])
@@ -195,12 +205,12 @@ class Model( model_generator_base ):
 
     # Build the model
     self.__model = tf.keras.Model([input_rings, input_shower_shapes, input_track_variables], output, name = "model")
-    
+
     self.__tuned_rings_models = self.load_models(rings_path)
     self.__tuned_shower_models = self.load_models(shower_path)
     self.__tuned_track_models = self.load_models(track_path)
 
- 
+
     # Follow the strategy proposed by werner were we keep these weights free to do the fine tunings
     # since most part of these variables have an stronge relationship (correlation).
     self.__trainable=True
@@ -217,11 +227,11 @@ class Model( model_generator_base ):
     model = clone_model( self.__model )
     MSG_INFO(self, "Target model:" )
     model.summary()
-    
+
     rings_model = self.get_best_model( self.__tuned_rings_models, sort , 0) # five neurons in the hidden layer
     MSG_INFO( self, "Rings model (right):")
     rings_model.summary()
-    
+
     shower_model = self.get_best_model( self.__tuned_shower_models, sort , 0) # five neurons in the hidden layer
     MSG_INFO( self, "Shower model (middle):")
     shower_model.summary()
@@ -243,7 +253,7 @@ class Model( model_generator_base ):
 try:
 
 
-  
+
   job_id = getJobConfigId( args.configFile )
 
   outputFile = args.volume+'/tunedDiscr.jobID_%s'%str(job_id).zfill(4) if args.volume else 'test.jobId_%s'%str(job_id).zfill(4)
