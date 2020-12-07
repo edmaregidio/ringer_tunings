@@ -56,8 +56,8 @@ def check(path):
 if check(args.volume) and command("cd %s"%args.volume):
 
 
-  if check('%s/ringer'%args.volume):
-    command('rm -rf ringer')
+  if check('%s/ringer_tunings'%args.volume):
+    command('rm -rf ringer_tunings')
 
 
   if check('%s/.complete'%args.volume):
@@ -69,14 +69,14 @@ if check(args.volume) and command("cd %s"%args.volume):
   if check('%s/mylog.log'%args.volume):
     command('rm mylog.log')
 
-  if not command("git clone https://github.com/jodafons/ringer_tunings.git && cd ringer && git checkout %s && cd .."%(args.branch)):
-    print("Its not possible to set the branch(%s) into the ringer repository"%args.branch)
+  if not command("git clone https://github.com/jodafons/ringer_tunings.git && cd ringer_tunings && git checkout %s && cd .."%(args.branch)):
+    print("Its not possible to set the branch(%s) into the ringer tunings repository"%args.branch)
     sys.exit(1)
 
 
 
   command("python ringer_tunings/versions/%s/job_tuning.py -d %s -v %s -c %s -r %s %s"%( args.tag, args.dataFile, args.volume, args.configFile, args.refFile, args.extraArgs) )
-  command('rm -rf ringer')
+  command('rm -rf ringer_tunings')
 
   sys.exit(0)
 else:
