@@ -96,8 +96,12 @@ This branch is dedicated to include all tunings related to the `fast electron` s
 All tunings tags should be included into the `versions` directory. For each tag, you must add some description here
 for tracking purpose.
 
-- v1: You should include some description here.
-- v2: You should include some description here.
+| Campaing  | Tag | Description                                                                 | Link                                                                                                    | Location                         |
+|-----------|-----|-----------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------|----------------------------------|
+| v1_el-trk | r0  | A MLP model (5 neurons) fed by three tracking variables                     | [here](https://github.com/jodafons/ringer_tunings/blob/zee_el/versions/v1/create_jobs_for_track.py)     | /home/jodafons/tunings/v1_el_trk |
+| v1_el     | r0  | The fusion MLP model between v9-ss (r0), v9-rg (r0) and v1_el-trk (r0)      | [here](https://github.com/jodafons/ringer_tunings/blob/zee_el/versions/v1/create_tasks_for_fusion.py)   | /home/jodafons/tunings/v1_el     |
+| v2_el     | r0  | The fusion model between v9-ss (r0), v10 (r2) and v1_el-trk (r0)            | [here](https://github.com/jodafons/ringer_tunings/blob/zee_el/versions/v2/create_tasks.py)              | /home/jodafons/tunings/v2_el     |
+
 
 
 ## Responsible:
