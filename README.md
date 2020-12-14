@@ -95,11 +95,16 @@ This branch is dedicated to include all tunings related to the `fast calo` step 
 All tunings tags should be included into the `versions` directory. For each tag, you must add some description here
 for tracking purpose.
 
-| Campaing | Tag | Description                                                           |   |   |
-|----------|-----|-----------------------------------------------------------------------|---|---|
-| v7       | r0  | The ringer vanilla model derived from mc15 campaign.                  |   |   |
-| v8       | r0  | The ringer vanilla model derived from data17 campaign.                |   |   |
-| v9       |     | Fusion strategy between shower shapes and rings using MLP structures. |   |   |
+| Campaing | Tag | Description                                                                 | Link     | Official |
+|----------|-----|-----------------------------------------------------------------------------|----------|----------|
+| v7       | r0  | The ringer vanilla model derived from mc15 campaign.                        | [here]() |          |
+| v8       | r0  | The ringer vanilla model derived from data17 campaign.                      |          |          |
+| v9-ss    | r0  | The vanilla model (5 neurons) fed by six shower shapes                      |          |          |
+| v9-rg    | r0  | The vanilla model (5 neurons) fed by rings.                                 |          |          |
+| v9       | r0  | The fusion model between v9-ss (r0) and v9-rg (r0)                          |          |          |
+| v10      | r2  | CNN model (Conv1D(4)->Conv1D(8)->Flatten->Dense(16)->Dense(1) fed by rings. |          |          |
+| v11      | r3  | Fusion model between v10 (r2) and v9-ss (r0)                                |          |          |
+
 
 - v2: You should include some description here.
 - v6: You should include some description here.
