@@ -146,6 +146,7 @@ def getPatterns_fusion( path, cv, sort):
   data_dphi      = d['data'][:, feature_names.index('L2Electron_trkClusDphi')].reshape((n,1))
   data_track = np.concatenate( (data_etOverPt, data_deta, data_dphi), axis=1)
 
+
   # This is mandatory
   splits = [(train_index, val_index) for train_index, val_index in cv.split(data_reta,target)]
 
