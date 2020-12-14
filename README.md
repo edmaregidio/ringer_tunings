@@ -97,14 +97,16 @@ for tracking purpose.
 
 | Campaing | Tag | Description                                                                 | Link                                                                                                     | Location                        |
 |----------|-----|-----------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------|---------------------------------|
-| v7       | r0  | The ringer vanilla model derived from mc15 campaign.                        | [here](https://github.com/jodafons/ringer_tunings/blob/zee/versions/v7/create_jobs.py)                   | /home/jodafons/tunings/v7/*.r0      |
-| v8       | r0  | The ringer vanilla model derived from data17 campaign.                      | [here](https://github.com/jodafons/ringer_tunings/blob/zee/versions/v8/create_jobs.py)                   | /home/jodafons/tunings/v8/*.r0       |
-| v9-ss    | r0  | The vanilla model (5 neurons) fed by six shower shapes                      | [here](https://github.com/jodafons/ringer_tunings/blob/zee/versions/v9/create_jobs_for_shower_models.py) | /home/jodafons/tunings/v9-ss/*.r0   |
-| v9-rg    | r0  | The vanilla model (5 neurons) fed by rings.                                 | [here](https://github.com/jodafons/ringer_tunings/blob/zee/versions/v9/create_jobs_for_rings_models.py)  | /home/jodafons/tunings/v9-rg/*.r0    |
-| v9       | r0  | The fusion model between v9-ss (r0) and v9-rg (r0)                          | [here](https://github.com/jodafons/ringer_tunings/blob/zee/versions/v9/create_tasks_for_fusion.py)       | /home/jodafons/tunings/v9/*.r0       |
+| v7       | r0  | The ringer vanilla model derived from mc15 campaign.                        | [here](https://github.com/jodafons/ringer_tunings/blob/zee/versions/v7/create_jobs.py)                   | /home/jodafons/tunings/v7      |
+| v8       | r0  | The ringer vanilla model derived from data17 campaign.                      | [here](https://github.com/jodafons/ringer_tunings/blob/zee/versions/v8/create_jobs.py)                   | /home/jodafons/tunings/v8       |
+| v9-ss    | r0  | The vanilla model (5 neurons) fed by six shower shapes                      | [here](https://github.com/jodafons/ringer_tunings/blob/zee/versions/v9/create_jobs_for_shower_models.py) | /home/jodafons/tunings/v9-ss   |
+| v9-rg    | r0  | The vanilla model (5 neurons) fed by rings.                                 | [here](https://github.com/jodafons/ringer_tunings/blob/zee/versions/v9/create_jobs_for_rings_models.py)  | /home/jodafons/tunings/v9-rg    |
+| v9       | r0  | The fusion model between v9-ss (r0) and v9-rg (r0)                          | [here](https://github.com/jodafons/ringer_tunings/blob/zee/versions/v9/create_tasks_for_fusion.py)       | /home/jodafons/tunings/v9       |
 | v10      | r2  | CNN model (Conv1D(4)->Conv1D(8)->Flatten->Dense(16)->Dense(1) fed by rings. | [here](https://github.com/jodafons/ringer_tunings/blob/zee/versions/v10/create_jobs.py)                  | /home/jodafons/tunings/v10/*.r2 |
 | v11      | r3  | Fusion model between v10 (r2) and v9-ss (r0)                                | [here](https://github.com/jodafons/ringer_tunings/blob/zee/versions/v11/create_tasks.py)                 | /home/jodafons/tunings/v11/*.r3 |
 
+
+>**NOTE**: All tunings are stored at LPS caloba cluster (jodafons@login.lps.ufrj.br)
 
 ## Responsible:
 
