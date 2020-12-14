@@ -5,13 +5,13 @@ import os
 
 path_to_rings   = '/home/jodafons/public/tunings/v9_rg/user.jodafons.data17_13TeV.AllPeriods.sgn.probes_lhmedium_EGAM1.bkg.VProbes_EGAM7.GRL_v97.v9_rg_et{ET}_eta{ETA}.r0' 
 path_to_shower  = '/home/jodafons/public/tunings/v9_ss/user.jodafons.data17_13TeV.AllPeriods.sgn.probes_lhmedium_EGAM1.bkg.VProbes_EGAM7.GRL_v97.v9_ss_et{ET}_eta{ETA}.r0'
-path_to_track   = '/home/jodafons/public/tunings/v1_el/user.jodafons.data17_13TeV.AllPeriods.sgn.probes_lhmedium_EGAM1.bkg.VProbes_EGAM7.GRL_v97.v1_el_trk_et{ET}_eta{ETA}.r0'
+path_to_track   = '/home/jodafons/public/tunings/v1_el_trk/user.jodafons.data17_13TeV.AllPeriods.sgn.probes_lhmedium_EGAM1.bkg.VProbes_EGAM7.GRL_v97.v1_el_trk_et{ET}_eta{ETA}.r0'
 
 
 
 command = """maestro.py task create \
   -v $PWD \
-  -t user.jodafons.data17_13TeV.AllPeriods.sgn.probes_lhmedium_EGAM1.bkg.VProbes_EGAM7.GRL_v97.v1_el_et{ET}_eta{ETA}.r0 \
+  -t user.jodafons.data17_13TeV.AllPeriods.sgn.probes_lhmedium_EGAM1.bkg.VProbes_EGAM7.GRL_v97.v1_el_et{ET}_eta{ETA}.r2 \
   -c user.jodafons.job_config.Zee_v1_el.10sorts.2inits \
   -d user.jodafons.data17_13TeV.AllPeriods.sgn.probes_lhmedium_EGAM1.bkg.VProbes_EGAM7.GRL_v97_et{ET}_eta{ETA}.npz \
   --sd "{REF}" \
