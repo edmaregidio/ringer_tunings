@@ -95,24 +95,15 @@ This branch is dedicated to include all tunings related to the `fast calo` step 
 All tunings tags should be included into the `versions` directory. For each tag, you must add some description here
 for tracking purpose.
 
-| Campaing | Tag | Description                                                                 | Link     | Official |
-|----------|-----|-----------------------------------------------------------------------------|----------|----------|
-| v7       | r0  | The ringer vanilla model derived from mc15 campaign.                        | [here]() |          |
-| v8       | r0  | The ringer vanilla model derived from data17 campaign.                      |          |          |
-| v9-ss    | r0  | The vanilla model (5 neurons) fed by six shower shapes                      |          |          |
-| v9-rg    | r0  | The vanilla model (5 neurons) fed by rings.                                 |          |          |
-| v9       | r0  | The fusion model between v9-ss (r0) and v9-rg (r0)                          |          |          |
-| v10      | r2  | CNN model (Conv1D(4)->Conv1D(8)->Flatten->Dense(16)->Dense(1) fed by rings. |          |          |
-| v11      | r3  | Fusion model between v10 (r2) and v9-ss (r0)                                |          |          |
-
-
-- v2: You should include some description here.
-- v6: You should include some description here.
-- v7: You should include some description here.
-- v8: You should include some description here.
-- v9: You should include some description here.
-- v10: You should include some description here.
-- v11: You should include some description here.
+| Campaing | Tag | Description                                                                 | Link                                                                                                     | Location                        |
+|----------|-----|-----------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------|---------------------------------|
+| v7       | r0  | The ringer vanilla model derived from mc15 campaign.                        | [here](https://github.com/jodafons/ringer_tunings/blob/zee/versions/v7/create_jobs.py)                   | /home/jodafons/tunings/v7/*.r0      |
+| v8       | r0  | The ringer vanilla model derived from data17 campaign.                      | [here](https://github.com/jodafons/ringer_tunings/blob/zee/versions/v8/create_jobs.py)                   | /home/jodafons/tunings/v8/*.r0       |
+| v9-ss    | r0  | The vanilla model (5 neurons) fed by six shower shapes                      | [here](https://github.com/jodafons/ringer_tunings/blob/zee/versions/v9/create_jobs_for_shower_models.py) | /home/jodafons/tunings/v9-ss/*.r0   |
+| v9-rg    | r0  | The vanilla model (5 neurons) fed by rings.                                 | [here](https://github.com/jodafons/ringer_tunings/blob/zee/versions/v9/create_jobs_for_rings_models.py)  | /home/jodafons/tunings/v9-rg/*.r0    |
+| v9       | r0  | The fusion model between v9-ss (r0) and v9-rg (r0)                          | [here](https://github.com/jodafons/ringer_tunings/blob/zee/versions/v9/create_tasks_for_fusion.py)       | /home/jodafons/tunings/v9/*.r0       |
+| v10      | r2  | CNN model (Conv1D(4)->Conv1D(8)->Flatten->Dense(16)->Dense(1) fed by rings. | [here](https://github.com/jodafons/ringer_tunings/blob/zee/versions/v10/create_jobs.py)                  | /home/jodafons/tunings/v10/*.r2 |
+| v11      | r3  | Fusion model between v10 (r2) and v9-ss (r0)                                | [here](https://github.com/jodafons/ringer_tunings/blob/zee/versions/v11/create_tasks.py)                 | /home/jodafons/tunings/v11/*.r3 |
 
 
 ## Responsible:
