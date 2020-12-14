@@ -95,6 +95,12 @@ This branch is dedicated to include all tunings related to the `fast calo` step 
 All tunings tags should be included into the `versions` directory. For each tag, you must add some description here
 for tracking purpose.
 
+| Campaing | Tag | Description                                                           |   |   |
+|----------|-----|-----------------------------------------------------------------------|---|---|
+| v7       | r0  | The ringer vanilla model derived from mc15 campaign.                  |   |   |
+| v8       | r0  | The ringer vanilla model derived from data17 campaign.                |   |   |
+| v9       |     | Fusion strategy between shower shapes and rings using MLP structures. |   |   |
+
 - v2: You should include some description here.
 - v6: You should include some description here.
 - v7: You should include some description here.
