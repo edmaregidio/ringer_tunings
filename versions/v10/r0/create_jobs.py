@@ -27,17 +27,17 @@ def create_model( c1, c2, d1, kernel_size=2, use_l2=False ):
 
 
 models = [
-            create_model(4 ,8 ,16, 3, True),
+            create_model(16 ,32 ,32, 2, False),
             ]
 
 
 create_jobs( models        = models,
-             nInits        = 5, # Five inits for r2 and 2 for r1
+             nInits        = 10, # Five inits for r2 and 2 for r1
              nInitsPerJob  = 1,
              sortBounds    = 10,
              nSortsPerJob  = 1,
              nModelsPerJob = 1,
-             outputFolder  = 'job_config.Zee_v10.10sorts.5init',
+             outputFolder  = 'job_config.Zee_v10.10sorts.10init.r0',
              )
 
 

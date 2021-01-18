@@ -84,7 +84,7 @@ create_jobs( models        = models,
              sortBounds    = 10,
              nSortsPerJob  = 1,
              nModelsPerJob = 1,
-             outputFolder  = 'job_config.Zee_v10.many_models.10sorts.10inits',
+             outputFolder  = 'job_config.Zee_v10.many_models.10sorts.10inits.r0',
              )
 
 
