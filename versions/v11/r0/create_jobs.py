@@ -31,10 +31,6 @@ output = layers.Activation('sigmoid', name='output_for_training')(dense)
 model = tf.keras.Model([input_rings, input_shower_shapes], output, name = "model")
 
 
-input  = layers.Input(shape=(1,), name = 'Input')
-output = layers.Dense(1)(input)
-model  = tf.keras.Model(input, output, name = "dummy")
-
 create_jobs( models = [model],
         nInits        = 10,
         nInitsPerJob  = 1,
