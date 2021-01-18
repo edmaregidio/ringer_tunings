@@ -12,8 +12,10 @@ command = """maestro.py task create \
   --exec "run_tuning.py -c %IN -d %DATA -r %REF -v %OUT -b zee -t v9 -p r0 \
   --queue "gpu" """
 
-
-os.makedirs(path)
+try:
+    os.makedirs(path)
+except:
+    pass
 
 for et in range(5):
     for eta in range(5):
