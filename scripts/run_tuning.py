@@ -28,6 +28,10 @@ parser.add_argument('-b', '--branch', action='store',
         dest='branch', required = True, default = None,
             help = "The tuning branch in ringetunings repository")
 
+parser.add_argument('-p', '--proc', action='store',
+        dest='proc', required = True, default = None,
+            help = "The process (usually tagged as r0, r1, ...).")
+
 parser.add_argument('-v', '--volume', action='store',
         dest='volume', required = True, default = None,
             help = "The output path")
@@ -75,7 +79,8 @@ if check(args.volume) and command("cd %s"%args.volume):
 
 
 
-  command("python ringer_tunings/versions/%s/job_tuning.py -d %s -v %s -c %s -r %s %s"%( args.tag, args.dataFile, args.volume, args.configFile, args.refFile, args.extraArgs) )
+  command("python ringer_tunings/versions/%s/%s/job_tuning.py -d %s -v %s -c %s -r %s %s"%( args.tag, args.proc, args.dataFile, args.volume, \
+                                                                                            args.configFile, args.refFile, args.extraArgs) )
   command('rm -rf ringer_tunings')
 
   sys.exit(0)
