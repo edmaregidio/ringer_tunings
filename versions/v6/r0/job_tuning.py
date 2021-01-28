@@ -33,7 +33,7 @@ def getPatterns( path, cv, sort):
   x_val = data [ splits[sort][1]]
   y_val = target [ splits[sort][1] ]
 
-  return x_train, x_val, y_train, y_val, splits
+  return x_train, x_val, y_train, y_val, splits, []
 
 
 def getPileup( path ):
