@@ -34,5 +34,5 @@ createPandaJobs(
         nInitsPerJob  = 1,
         sortBounds    = 10,
         nSortsPerJob  = 1,
-        nModelsPerJob = 5,
-        outputFolder  = 'job_config.Zrad_v22n2to10.10sorts.10inits'       )
+        nModelsPerJob = 1,
+        outputFolder  = 'job_config.Zrad_v2.n2to10.10sorts.10inits'       )

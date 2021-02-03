@@ -4,10 +4,10 @@ import glob
 from itertools import product
 
 # define the paths into the container
-data_path    = '/home/juan/datasets/npz/mc16_13TeV/offline/mc16_13TeV.sgn.probes_MC_DP.bkg.noMC.JF17_et%i_eta%i.npz'
-ref_path     = '/home/juan/tunnings/v2/ref/mc16_13TeV.sgn.probes_MC_DP.bkg.noMC.JF17_et%i_eta%i.ref.pic.gz'
-config_path  = '/home/juan/tunnings/v2/config/job_config.Zrad_v1.n2to10.10sorts.5inits/*'
-output_path  = '/home/juan/tunnings/v2/output/user.jlieberm.mc16_13TeV.sgn.probes_MC_DP.bkg.noMC.JF17_et%i_eta%i.v1'
+data_path    = '/home/juan.marin/datasets/npz/mc16_13TeV/offline/mc16_13TeV.sgn.DP.medium.bkg.DiJet.vetoloose_et%i_eta%i.npz'
+ref_path     = '/home/juan.marin/tunnings/v2/ref/mc16_13TeV.sgn.probes_MC_DP.bkg.noMC.JF17_et%i_eta%i.ref.pic.gz'
+config_path  = '/home/juan.marin/tunnings/v2/config/job_config.Zrad_v1.n2to10.10sorts.5inits/*'
+output_path  = '/home/juan.marin/tunnings/v2/output/user.jlieberm.mc16_13TeV.sgn.probes_MC_DP.bkg.noMC.JF17_et%i_eta%i.v1'
 
 # create a list of config files
 config_list  = glob.glob(config_path)
