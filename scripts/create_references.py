@@ -2,18 +2,13 @@
 
 # from saphyra import PandasJob, sp, PreProcChain_v1, Norm1, Summary, PileupFit, ReshapeToConv1D
 from saphyra import sp, Summary
-from sklearn.model_selection import KFold,StratifiedKFold
 from Gaugi.messenger import LoggingLevel, Logger
-from keras.models import Sequential
-from keras.layers import Dense, Dropout, Activation, Conv1D, Flatten
 from Gaugi import load
 import argparse
 import sys,os
 import numpy as np
 
-#path = '/eos/user/j/jodafons/CERN-DATA/tuning/RingerNote_2018/files/data17_13TeV.AllPeriods.sgn.probes_lhmedium_EGAM1.bkg.VProbes_EGAM7.GRL_v97/*.npz'
-#path = '/eos/user/j/jodafons/CERN-DATA/tuning/RingerNote_2018/files/data17_13TeV.AllPeriods.sgn.probes_lhmedium_EGAM2.bkg.VProbes_EGAM7.GRL_v97/*.npz'
-path = '/home/juan.marin/datasets/npz/*.npz'
+path = '/home/juan.marin/datasets/npz/mc16_13TeV/offline/*.npz'
 
 from Gaugi import expandFolders
 fileList = expandFolders(path)
