@@ -8,7 +8,7 @@ import argparse
 import sys,os
 import numpy as np
 
-path = '/home/juan.marin/datasets/npz/mc16_13TeV/offline/*.npz'
+path = '/home/juan.marin/datasets/npz/mc16_13TeV/offline.v2/*.npz'
 
 from Gaugi import expandFolders
 fileList = expandFolders(path)
@@ -54,8 +54,6 @@ for f in fileList:
   obj.setEtaBinIdx( etBinIdx ) 
 
   for ref in ref_target:
-    print(raw['data'].shape)
-    print(np.where(raw['features']==ref[1]))
     d = raw['data'][:,np.where(raw['features'] == ref[1])[0][0]]
     d_s = d[target==1]
     d_b = d[target!=1]
