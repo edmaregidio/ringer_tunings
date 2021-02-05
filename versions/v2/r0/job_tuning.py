@@ -3,7 +3,6 @@
 try:
   from tensorflow.compat.v1 import ConfigProto
   from tensorflow.compat.v1 import InteractiveSession
-
   config = ConfigProto()
   config.gpu_options.allow_growth = True
   session = InteractiveSession(config=config)
@@ -12,15 +11,12 @@ except Exception as e:
   print("Not possible to set gpu allow growth")
 
 
-
 def getPatterns( path, cv, sort):
-
 
   def norm1( data ):
       norms = np.abs( data.sum(axis=1) )
       norms[norms==0] = 1
       return data/norms[:,None]
-
 
   from Gaugi import load
   d = load(path)
@@ -34,7 +30,7 @@ def getPatterns( path, cv, sort):
   x_val = data [ splits[sort][1]]
   y_val = target [ splits[sort][1] ]
 
-  return x_train, x_val, y_train, y_val, splits
+  return x_train, x_val, y_train, y_val, splits, []
 
 
 
@@ -49,8 +45,6 @@ def getJobConfigId( path ):
   return dict(load(path))['id']
 
 
-from saphyra import PatternGenerator, sp, PreProcChain_v1, Norm1, ReferenceFit,Summary, ReshapeToConv1D
-from sklearn.model_selection import KFold,StratifiedKFold
 from Gaugi.messenger import LoggingLevel, Logger
 from Gaugi import load
 import numpy as np
@@ -67,9 +61,10 @@ parser.add_argument('-c','--configFile', action='store',
         dest='configFile', required = True,
             help = "The job config file that will be used to configure the job (sort and init).")
 
-parser.add_argument('-o','--outputFile', action='store',
-        dest='outputFile', required = False, default = None,
-            help = "The output tuning name.")
+parser.add_argument('-v','--volume', action='store',
+        dest='volume', required = False, default = None,
+            help = "The volume output.")
+
 
 parser.add_argument('-d','--dataFile', action='store',
         dest='dataFile', required = False, default = None,
@@ -87,48 +82,38 @@ if len(sys.argv)==1:
 args = parser.parse_args()
 
 
-# Check if this job will run in DB mode
-job_id = getJobConfigId( args.configFile )
-
-
 try:
 
+  job_id = getJobConfigId( args.configFile )
 
-  outputFile = args.outputFile
-  if '/' in outputFile:
-    # This is a path
-    outputFile = (outputFile+'/tunedDiscr.jobID_%s'%str(job_id).zfill(4)).replace('//','/')
-  else:
-    outputFile+='.jobId_%s'%str(job_id).zfill(4)
-
-                ]
+  outputFile = args.volume+'/tunedDiscr.jobID_%s'%str(job_id).zfill(4) if args.volume else 'test.jobId_%s'%str(job_id).zfill(4)
 
   targets = [
-                ('tight_cutbased' , 'T0HLTElectronT2CaloTight'        ),
-                ('medium_cutbased', 'T0HLTElectronT2CaloMedium'       ),
-                ('loose_cutbased' , 'T0HLTElectronT2CaloLoose'        ),
-                ('vloose_cutbased', 'T0HLTElectronT2CaloVLoose'       ),
+                ('tight_cutbased' , 'T0HLTElectronT2CaloTight'  ),
+                ('medium_cutbased', 'T0HLTElectronT2CaloMedium' ),
+                ('loose_cutbased' , 'T0HLTElectronT2CaloLoose'  ),
+                ('vloose_cutbased', 'T0HLTElectronT2CaloVLoose' ),
                 ]
 
 
   from saphyra.decorators import Summary, Reference
   decorators = [Summary(), Reference(args.refFile, targets)]
 
+  from sklearn.model_selection import StratifiedKFold
+  from saphyra.callbacks import sp
   from saphyra import BinaryClassificationJob
+  from saphyra import PatternGenerator
+
   # Create the panda job
   job = BinaryClassificationJob(
                     PatternGenerator( args.dataFile, getPatterns ),
+                    StratifiedKFold(n_splits=10, random_state=512, shuffle=True),
                     job               = args.configFile,
                     loss              = 'mean_squared_error',
-                    #loss              = 'binary_crossentropy',
                     metrics           = ['accuracy'],
                     epochs            = 5000,
-                    ppChain           = pp,
-                    crossval          = kf,
-                    outputfile        = outputFile,
-                    #class_weight      = True,
-                    #save_history      = False,
                     callbacks         = [sp(patience=25, verbose=True, save_the_best=True)],
+                    outputFile        = outputFile
                     )
 
   job.decorators += decorators
