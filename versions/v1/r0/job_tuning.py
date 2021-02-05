@@ -102,6 +102,7 @@ try:
   from sklearn.model_selection import StratifiedKFold
   from saphyra.callbacks import sp
   from saphyra import BinaryClassificationJob
+  from saphyra import PatternGenerator
 
   # Create the panda job
   job = BinaryClassificationJob(
@@ -111,10 +112,8 @@ try:
                     loss              = 'mean_squared_error',
                     metrics           = ['accuracy'],
                     epochs            = 5000,
-                    ppChain           = pp,
-                    crossval          = kf,
-                    outputfile        = outputFile,
                     callbacks         = [sp(patience=25, verbose=True, save_the_best=True)],
+                    outputFile        = outputFile
                     )
 
   job.decorators += decorators
