@@ -278,7 +278,7 @@ try:
     getPatterns=getPatterns_rings
   elif args.type == 'fusion':
     getPatterns=getPatterns_fusion
-    model = Model( args.path_to_rg, args.path_to_ss )
+    model = Model( args.path_to_rings, args.path_to_shower )
   else:
     getPatterns=getPatterns_rings
 
