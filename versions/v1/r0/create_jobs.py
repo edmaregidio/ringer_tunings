@@ -15,20 +15,17 @@ def get_model(neuron_min, neuron_max):
     modelCol.append(model)
   return modelCol
 
-# cross-validation method
-n_folds = 10 # normally 10 folds
 
 n_min_neuron = 2
 n_max_neuron = 10
-n_inits      = 10
 
 create_jobs( 
         models       = get_model(neuron_min=n_min_neuron,
                                  neuron_max=n_max_neuron),
-        nInits        = 5,
+        nInits        = 10,
         nInitsPerJob  = 1,
         sortBounds    = 10,
         nSortsPerJob  = 1,
-        nModelsPerJob = 5,
+        nModelsPerJob = 1,
         outputFolder  = 'job_config.Zrad_v1.n2to10.10sorts.10inits.r0',
         )
