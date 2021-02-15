@@ -205,9 +205,9 @@ class Model( model_generator_base ):
     input_rings = layers.Input(shape=(100,), name='Input_rings')
     conv_rings   = layers.Reshape((100,1))(input_rings)
     #conv_rings   = layers.Conv1D( 16, kernel_size=2, name='conv1d_rings_1', activation='relu')(conv_rings)
-    conv_rings   = layers.Conv1D( 4, kernel_size=3, name='conv1d_rings_1', activation='relu')(conv_rings)
+    conv_rings   = layers.Conv1D( 4, kernel_size=2, name='conv1d_rings_1', activation='relu')(conv_rings)
     #conv_rings   = layers.Conv1D( 32, kernel_size=2, name='conv1d_rings_2', activation='relu')(conv_rings)
-    conv_rings   = layers.Conv1D( 8, kernel_size=3, name='conv1d_rings_2', activation='relu')(conv_rings)
+    conv_rings   = layers.Conv1D( 8, kernel_size=2, name='conv1d_rings_2', activation='relu')(conv_rings)
     conv_output  = layers.Flatten()(conv_rings)
     #dense_from_conv = layers.Dense(32, activation='relu', name='dense_conv_layer')(conv_output)
     
