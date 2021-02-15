@@ -221,8 +221,8 @@ class Model( model_generator_base ):
     input_concat = layers.Concatenate(axis=1)([conv_output, dense_shower_shapes])
 
     dense = layers.Dense(16, activation='relu', name='dense_layer')(input_concat)
-    #dense = layers.Dense(1,activation='linear', name='output_for_inference')(dense)
-    dense = layers.Dense(1,activation='linear', name='output_for_inference', kernel_regularizer='l2', bias_regularizer='l2')(dense)
+    dense = layers.Dense(1,activation='linear', name='output_for_inference')(dense)
+    #dense = layers.Dense(1,activation='linear', name='output_for_inference', kernel_regularizer='l2', bias_regularizer='l2')(dense)
     output = layers.Activation('sigmoid', name='output_for_training')(dense)
 
 
@@ -244,7 +244,6 @@ class Model( model_generator_base ):
   #
   def __call__( self, sort ):
 
-    print('aki joao')
     from tensorflow.keras.models import clone_model
     # create a new model
     model = clone_model( self.__model )
