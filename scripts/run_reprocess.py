@@ -69,7 +69,7 @@ if check(args.volume) and command("cd %s"%args.volume):
   if check('%s/mylog.log'%args.volume):
     command('rm mylog.log')
 
-  if not command("git clone https://github.com/jodafons/ringer_tunings.git && cd ringer_tunings && git checkout %s && cd .."%(args.branch)):
+  if not command("git clone https://github.com/ringer-atlas/ringer_tunings.git && cd ringer_tunings && git checkout %s && cd .."%(args.branch)):
     print("Its not possible to set the branch(%s) into the ringer repository"%args.branch)
     sys.exit(1)
 
