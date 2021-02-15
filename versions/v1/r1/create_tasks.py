@@ -24,3 +24,4 @@ for et in range(5):
         cmd = command.format(ET=et,ETA=eta,REF=ref,PATH=path)
         print(cmd)
         os.system(cmd)
+        break

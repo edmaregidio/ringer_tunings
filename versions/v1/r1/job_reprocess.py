@@ -64,7 +64,6 @@ try:
                 ('tight_cutbased' , 'T0HLTElectronT2CaloTight'        ),
                 ('medium_cutbased', 'T0HLTElectronT2CaloMedium'       ),
                 ('loose_cutbased' , 'T0HLTElectronT2CaloLoose'        ),
-                ('vloose_cutbased', 'T0HLTElectronT2CaloVLoose'       ),
                 ]
   
   
