@@ -4,7 +4,7 @@
 
 import argparse
 import sys,os
-
+import numpy as np
 
 parser = argparse.ArgumentParser(description = '', add_help = False)
 parser = argparse.ArgumentParser()
