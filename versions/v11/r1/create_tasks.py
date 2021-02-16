@@ -19,12 +19,15 @@ command = """maestro.py task create \
   --extraArgs '--type fusion --path_to_rings {RINGS} --path_to_shower {SHOWER}'" \
   --queue "gpu" """
 
-
+try:
+    os.makedirs(path)
+except:
+    pass
 
 for et in range(5):
     for eta in range(5):
         ref = "{'%%REF':'user.jodafons.data17_13TeV.AllPeriods.sgn.probes_lhmedium_EGAM1.bkg.VProbes_EGAM7.GRL_v97_et%d_eta%d.ref.pic.gz'}"%(et,eta)
-        cmd = command.format(ET=et,ETA=eta,REF=ref, RINGS=path_to_rings.format(ET=et,ETA=eta), SHOWER=path_to_shower.format(ET=et,ETA=eta) )
+        cmd = command.format(PATH=path, ET=et,ETA=eta,REF=ref, RINGS=path_to_rings.format(ET=et,ETA=eta), SHOWER=path_to_shower.format(ET=et,ETA=eta) )
         print(cmd)
         os.system(cmd)
 
