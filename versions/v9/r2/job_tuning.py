@@ -19,11 +19,30 @@ def getPatterns( path, cv, sort):
       norms = np.abs( data.sum(axis=1) )
       norms[norms==0] = 1
       return data/norms[:,None]
+  
+  
 
   from Gaugi import load
   import numpy as np
   d = load(path)
-  data = norm1(d['data'][:,1:101])
+  n = d['data'].shape[0]
+  data_rings = norm1(d['data'][:,1:101])
+  data_reta   = d['data'][:, 104].reshape((n,1)) / 1.0
+  data_eratio = d['data'][:, 105].reshape((n,1)) / 1.0
+  data_f1     = d['data'][:, 106].reshape((n,1)) / 0.6
+  data_f3     = d['data'][:, 114].reshape((n,1)) / 0.04
+  data_weta2  = d['data'][:, 119].reshape((n,1)) / 0.02
+  data_wstot  = d['data'][:, 117].reshape((n,1)) / 1.0
+  
+  # Fix all shower shapes variables
+  data_eratio[data_eratio>10.0]=0
+  data_eratio[data_eratio>1.]=1.0
+  data_wstot[data_wstot<-99]=0
+ 
+
+  data = np.concatenate( (data_rings, data_reta,data_eratio,data_f1,data_f3,data_weta2, data_wstot), axis=1)
+  
+  
   target = d['target']
   target[target!=1]=-1
   splits = [(train_index, val_index) for train_index, val_index in cv.split(data,target)]
