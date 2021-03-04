@@ -4,30 +4,22 @@ from saphyra import *
 from saphyra import RpLayer
 from tensorflow.keras.layers import Layer
 import tensorflow as tf
+from tensorflow.keras import layers
 
-def get_model(rvec):
-  modelCol = []
-  from tensorflow.keras.models import Sequential
-  from tensorflow.keras.layers import Dense, Dropout, Activation, Conv1D, Flatten
-  for n in range(2,5+1):
-    model = Sequential()
-    layerRp = Rplayer(rvec)
-    inputRp = layerRp.build(100)
-    model.add(inputRp)
-    model.add(Dense(n, input_shape=(100,), activation='tanh', name='dense_layer'))
-    model.add(Dense(1, activation='linear', name='output_for_inference'))
-    model.add(Activation('tanh', name='output_for_training'))
-    modelCol.append(model)
-  return modelCol
+inputs = layers.Input(shape=(100,), name='Input_rings')
+input_rp = RpLayer()(inputs)
+dense_rp = layers.Dense(5, activation='tanh', name='dense_rp_layer')(input_rp)
+dense = layers.Dense(1,activation='linear', name='output_for_inference')(dense_rp)
+outputs = layers.Activation('tanh', name='output_for_training')(dense)
+model = tf.keras.Model(inputs, outputs, name = "model")
 
-rvec = np.concatenate((np.arange(1,9),np.arange(1,65),np.arange(1,9),np.arange(1,9),np.arange(1,5),np.arange(1,5),np.arange(1,5)))
 
-create_jobs( models = get_model(),
-        nInits        = 10,
+create_jobs( models = [model],
+        nInits        = 5,
         nInitsPerJob  = 1,
         sortBounds    = 10,
         nSortsPerJob  = 1,
         nModelsPerJob = 1,
-        outputFolder  = 'job_config.Zee_v8.n2to5.10sorts.10inits.r0' )
+        outputFolder  = 'job_config.Zee_Rp.n5.10sorts.5inits.r0' )
 
 
