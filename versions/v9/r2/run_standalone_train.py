@@ -5,7 +5,7 @@ from itertools import product
 
 # define the paths into the container
 data_path    = '/home/Derivations/NPZ/NPZ1/dataset17_13TeV/data17_13TeV.AllPeriods.sgn.probes_lhmedium_EGAM1.bkg.VProbes_EGAM7.GRL_v97_et%i_eta%i.npz'
-ref_path     = '/home/RingerDev/Tuning/RingerRp/r0/ref/edmar.egidio/Tunings/v9/RingerRp/ref/data17_13TeV.AllPeriods.sgn.probes_lhmedium_EGAM1.bkg.VProbes_EGAM7.GRL_v97_et%i_eta%i.ref.pic.gz'
+ref_path     = '/home/RingerDev/Tuning/RingerRp/r0/ref/data17_13TeV.AllPeriods.sgn.probes_lhmedium_EGAM1.bkg.VProbes_EGAM7.GRL_v97_et%i_eta%i.ref.pic.gz'
 config_path  = '/home/RingerDev/Tuning/RingerRp/r0/config/job_config.Zee_Rp.n2_10.10sorts.10inits.r0/*'
 output_path  = '/home/RingerDev/Tuning/RingerRp/r0/output/user.eegidiop.data17_13TeV.AllPeriods.sgn.probes_lhmedium_EGAM1.bkg.VProbes_EGAM7.GRL_v97_et%i_eta%i.v9.r2'
 # create a list of config files
