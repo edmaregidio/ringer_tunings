@@ -16,7 +16,7 @@ def get_model( ):
                 outputs = layers.Activation('tanh', name='output_for_training')(dense)
                 model = tf.keras.Model(inputs, outputs, name = "model")
                 modelCol.append(model)
-
+        return modelCol
 
 create_jobs( models = get_model(),
         nInits        = 10,
