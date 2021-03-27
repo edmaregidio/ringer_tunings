@@ -11,7 +11,7 @@ def get_model( ):
         for n in range(2,10+1):
                 inputs = layers.Input(shape=(100,), name='Input_rings')
                 input_rp = RpLayer()(inputs)
-                dense_rp = layers.Dense(5, activation='tanh', name='dense_rp_layer')(input_rp)
+                dense_rp = layers.Dense(n, activation='tanh', name='dense_rp_layer')(input_rp)
                 dense = layers.Dense(1,activation='linear', name='output_for_inference')(dense_rp)
                 outputs = layers.Activation('tanh', name='output_for_training')(dense)
                 model = tf.keras.Model(inputs, outputs, name = "model")
