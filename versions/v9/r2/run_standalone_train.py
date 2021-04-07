@@ -19,7 +19,22 @@ config_list  = glob.glob(config_path)
 print(config_list)
 
 # loop over the bins
-for iet, ieta in product(range(1,5), range(5)):
+for iet, ieta in product(1, range(3,5)):
+    print('Processing -> et: %i | eta: %i' %(iet, ieta))
+    # format the names
+    data_file = data_path %(iet, ieta)
+    ref_file  = ref_path  %(iet, ieta)
+    out_name  = output_path %(iet, ieta)
+
+    # loop over the config files
+    for iconfig in config_list:
+        m_command = """python3 job_tuning_rp.py -c {CONFIG} \\
+                       -d {DATAIN} \\
+                       -v {OUT} \\
+                       -r {REF}""".format(CONFIG=iconfig, DATAIN=data_file, OUT=out_name, REF=ref_file)
+        
+# loop over the bins
+for iet, ieta in product(range(2,5), range(5)):
     print('Processing -> et: %i | eta: %i' %(iet, ieta))
     # format the names
     data_file = data_path %(iet, ieta)
