@@ -19,7 +19,7 @@ config_list  = glob.glob(config_path)
 print(config_list)
 
 # loop over the bins
-for iet, ieta in product(range(5), range(5)):
+for iet, ieta in product(range(1,5), range(5)):
     print('Processing -> et: %i | eta: %i' %(iet, ieta))
     # format the names
     data_file = data_path %(iet, ieta)
