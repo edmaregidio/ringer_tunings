@@ -8,7 +8,8 @@ from tensorflow.keras import layers
 
 def get_model( ):
         modelCol = []
-        for n in range(2,10+1):
+        #for n in range(2,10+1):
+        for n in range(5,6):
                 inputs = layers.Input(shape=(100,), name='Input_rings')
                 input_rp = RpLayer()(inputs)
                 dense_rp = layers.Dense(n, activation='tanh', name='dense_rp_layer')(input_rp)
@@ -24,6 +25,6 @@ create_jobs( models = get_model(),
         sortBounds    = 10,
         nSortsPerJob  = 1,
         nModelsPerJob = 1,
-        outputFolder  = 'job_config.Zee_Rp.2n10.10sorts.10inits.r0' )
+        outputFolder  = 'job_config.Zee_Rp.5n5.10sorts.10inits.r0' )
 
 
