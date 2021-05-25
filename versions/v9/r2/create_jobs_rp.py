@@ -20,11 +20,11 @@ def get_model( ):
         return modelCol
 
 create_jobs( models = get_model(),
-        nInits        = 10,
+        nInits        = 5,
         nInitsPerJob  = 1,
         sortBounds    = 10,
         nSortsPerJob  = 1,
         nModelsPerJob = 1,
-        outputFolder  = 'job_config.Zee_Rp.5n5.10sorts.10inits.r0' )
+        outputFolder  = 'job_config.Zee_Rp.5n5.10sorts.5inits.r1' )
 
 
