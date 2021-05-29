@@ -11,7 +11,7 @@ from itertools import product
 
 data_path = '/home/edmar.egidio/datasets/npz/NPZ/dataset17_13TeV/data17_13TeV.AllPeriods.sgn.probes_lhmedium_EGAM1.bkg.VProbes_EGAM7.GRL_v97_et%i_eta%i.npz'
 ref_path = '/home/edmar.egidio/Tunings/RingerRp/r1/ref/data17_13TeV.AllPeriods.sgn.probes_lhmedium_EGAM1.bkg.VProbes_EGAM7.GRL_v97_et%i_eta%i.ref.pic.gz'
-config_path = '/home/edmar.egidio/Tunings/RingerRp/r1/config/job_config.Zee_Rp.5n5.10sorts.5inits.r1/*'
+config_path = '/home/edmar.egidio/Tunings/RingerRp/r1/config/job_config.Zee_Rp.2n10.10sorts.10inits.r1/*'
 output_path = '/home/edmar.egidio/Tunings/RingerRp/r1/output3/user.eegidiop.data17_13TeV.AllPeriods.sgn.probes_lhmedium_EGAM1.bkg.VProbes_EGAM7.GRL_v97_et%i_eta%i.rp.r1'
 
 # create a list of config files
@@ -20,7 +20,7 @@ print(config_list)
 
 
 # loop over the bins
-for iet, ieta in product(range(2,3), range(0,1)):
+for iet, ieta in product(range(0,5), range(0,5)):
     print('Processing -> et: %i | eta: %i' %(iet, ieta))
     # format the names
     data_file = data_path %(iet, ieta)
