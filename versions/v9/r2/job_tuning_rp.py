@@ -109,7 +109,7 @@ try:
                                   job               = args.configFile,
                                   loss              = 'mean_squared_error',
                                   metrics           = ['accuracy'],
-                                  callbacks         = [sp(patience=50, verbose=True, save_the_best=True)],
+                                  callbacks         = [sp(patience=50, verbose=True, rp_layer=True,save_the_best=True)],
                                   epochs            = 5000,
                                   class_weight      = False,
                                   outputFile        = outputFile )
