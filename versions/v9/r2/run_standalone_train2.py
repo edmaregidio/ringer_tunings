@@ -15,7 +15,7 @@ print(config_list)
 
 
 # loop over the bins
-for iet, ieta in product(range(0,3), range(0,5)):
+for iet, ieta in product(range(2,5), range(0,5)):
     print('Processing -> et: %i | eta: %i' %(iet, ieta))
     # format the names
     data_file = data_path %(iet, ieta)
